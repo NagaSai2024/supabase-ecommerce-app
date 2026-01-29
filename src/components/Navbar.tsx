@@ -1,5 +1,5 @@
 import { Heart, MoreVertical, Package, Search, ShoppingCart, User } from "lucide-react";
-import logo from "../assets/logo.png"
+import logo from "../assets/logo.png";
 import { VscAccount } from "react-icons/vsc";
 import { LuHeadset } from "react-icons/lu";
 import { BsShopWindow } from "react-icons/bs";

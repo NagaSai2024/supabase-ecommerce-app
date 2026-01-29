@@ -20,7 +20,7 @@ export default function TopDeals() {
     }, []);
 
     return (
-        <section className="w-full mt-3">
+        <section className="w-full mt-3 lg:px-3">
             <div className="bg-white border border-gray-200 p-4">
                 <h2 className="text-xl font-semibold mb-4">Top Deals</h2>
 
