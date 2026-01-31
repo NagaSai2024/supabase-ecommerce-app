@@ -9,7 +9,7 @@ type ProductCategories = {
     subtitle: string;
 }
 
-export default function HomeCategoies () {
+export default function HomeCategories () {
 
     const [ shoes, setShoes] = useState<ProductCategories[]>([])
     const [ beauty, setBeauty] = useState<ProductCategories[]>([])

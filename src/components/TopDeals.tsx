@@ -45,7 +45,7 @@ export default function TopDeals() {
                                         <p className="mt-2 text-sm font-medium text-gray-600 line-clamp-1 text-center leading-tight">
                                             {item.title}
                                         </p>
-                                        <p className="text-base font-semibold text-center leading tight -mt-5">
+                                        <p className="text-base font-semibold text-center leading-tight -mt-5">
                                             From ${item.final_price}
                                         </p>
                                     </Card>

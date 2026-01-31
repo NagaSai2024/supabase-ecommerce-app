@@ -8,11 +8,14 @@ import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Navbar() {
 
     const [moreHover, setMoreHover] = useState(false)
     const [loginHover, setLoginHover] = useState(false)
+
+    const navigate = useNavigate()
     return (
         <nav className="w-full border-b bg-white">
             <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
@@ -21,6 +24,7 @@ export default function Navbar() {
                     src={logo}
                     alt="Ominbazaar"
                     className="h-10 w-auto cursor-pointer"
+                    onClick={() => navigate("/")}
                 />
 
                 <div className="flex-1 max-w-xl relative">
@@ -40,7 +44,7 @@ export default function Navbar() {
                             onMouseLeave={() => setLoginHover(false)}
                         >
                             <DropdownMenuTrigger asChild>
-                                <Button variant="ghost" className="flex items-center gap-2">
+                                <Button variant="ghost" className="flex items-center gap-2" onClick={() => navigate("/login")}>
                                     <VscAccount />
                                     <span className="hidden md:inline">Login</span>
                                 </Button>
@@ -51,6 +55,7 @@ export default function Navbar() {
                                     <Button
                                         variant="link"
                                         className="h-auto p-0 text-sm font-medium text-blue-500"
+                                        onClick={() => navigate("/register")}
                                     >
                                         Sign Up
                                     </Button>
