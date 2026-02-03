@@ -1,4 +1,5 @@
 import { IoIosArrowDroprightCircle } from "react-icons/io";
+import { Skeleton } from "../ui/skeleton";
 
 type Item = {
     id: number;
@@ -35,6 +36,7 @@ export default function CategorySection({ heading, items }: ProductCategoryProps
                         </div>
                         <p className="mt-3 text-sm line-clamp-1">{item.title}</p>
                         <p className="text-green-600 font-semibold text-sm">{item.subtitle}</p>
+                        <Skeleton/>
                     </div>
                 ))}
             </div>

@@ -1,7 +1,7 @@
 import { CircleQuestionMark, Facebook, Gift, Instagram, Twitter, Youtube } from "lucide-react";
 import { PiShootingStarBold } from "react-icons/pi";
 import { BsShopWindow } from "react-icons/bs";
-import payments from '../assets/payments.png'
+import payments from "../../assets/payments.png"
 
 export default function Footer() {
     return (

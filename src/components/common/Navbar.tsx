@@ -1,12 +1,13 @@
 import { Heart, MoreVertical, Package, Search, ShoppingCart, User } from "lucide-react";
-import logo from "../assets/logo.png";
+import logo from "../../assets/logo.png";
 import { VscAccount } from "react-icons/vsc";
 import { LuHeadset } from "react-icons/lu";
 import { BsShopWindow } from "react-icons/bs";
 import { HiOutlineBell } from "react-icons/hi";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "./ui/dropdown-menu";
+import { IoIosTrendingUp } from "react-icons/io"
+import { Input } from "../ui/input";
+import { Button } from "../ui/button";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "../ui/dropdown-menu";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -105,10 +106,13 @@ export default function Navbar() {
                                         <HiOutlineBell />
                                         Notification Preferences
                                     </DropdownMenuItem>
-                                    <DropdownMenuSeparator />
                                     <DropdownMenuItem>
                                         <LuHeadset />
                                         24x7 Customer Care
+                                    </DropdownMenuItem>
+                                    <DropdownMenuItem>
+                                        <IoIosTrendingUp />
+                                        Advertise
                                     </DropdownMenuItem>
                                 </DropdownMenuContent>
                             </div>
