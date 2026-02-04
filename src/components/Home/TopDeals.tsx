@@ -1,8 +1,8 @@
 import { getTopDeals } from "@/lib/getTopDeals";
-import { useEffect, useState } from "react";
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "../ui/carousel";
 import { Card } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
+import { useQuery } from "@tanstack/react-query";
 
 type Product = {
     id: number;
@@ -14,14 +14,10 @@ type Product = {
 
 export default function TopDeals() {
 
-    const [products, setProducts] = useState<Product[]>([])
-    const [loading, setLoading] = useState(true)
-
-    useEffect(() => {
-        getTopDeals()
-            .then(setProducts)
-            .finally(() => setLoading(false))
-    }, []);
+    const {data: topProductsQuery= []} = useQuery<Product[]>({
+        queryKey: ["topDeals"],
+        queryFn: getTopDeals,
+    });
 
     return (
         <section className="w-full mt-3 lg:px-3">
@@ -31,40 +27,27 @@ export default function TopDeals() {
                 <div className="relative">
                     <Carousel opts={{ align: "start" }} className="w-full">
                         <CarouselContent className="-ml-0">
-                            {loading ? Array.from({ length: 5 }) : products.map((item, index) => (
+                            {topProductsQuery.map((item) => (
                                 <CarouselItem
-                                    key={loading ? index : item.id}
+                                    key={item.id}
                                     className="pl-0 basis-[70%] sm:basis-1/2 md:basis-1/3 lg:basis-1/5"
                                 >
                                     <Card className="p-4 flex flex-col items-center justify-between h-full hover:shadow-md transition">
 
                                         <div className="w-full h-40 flex items-center justify-center overflow-hidden">
-                                            {loading ? (
-                                                <Skeleton className="h-32 w-32 rounded-md" />
-                                            ) : (
-                                                <img
-                                                    src={item.image_url}
-                                                    alt="product"
-                                                    className="max-h-full object-contain transition-transfrom duration-300 hover:scale-105"
-                                                />
-                                            )}
+                                            <img
+                                                src={item.image_url}
+                                                alt="product"
+                                                className="max-h-full object-contain transition-transfrom duration-300 hover:scale-105"
+                                            />
                                         </div>
 
-                                        {loading ? (
-                                            <>
-                                                <Skeleton className="h-4 w-3/4 mt-3"/>
-                                                <Skeleton className="h-5 w-1/2 mt-2"/>
-                                            </>
-                                        ) : (
-                                            <>
-                                                <p className="mt-2 text-sm font-medium text-gray-600 line-clamp-1 text-center leading-tight">
-                                                    {item.title}
-                                                </p>
-                                                <p className="text-base font-semibold text-center leading-tight -mt-5">
-                                                    From ${item.final_price}
-                                                </p>
-                                            </>
-                                        )}
+                                        <p className="mt-2 text-sm font-medium text-gray-600 line-clamp-1 text-center leading-tight">
+                                            {item.title}
+                                        </p>
+                                        <p className="text-base font-semibold text-center leading-tight -mt-5">
+                                            From ${item.final_price}
+                                        </p>
                                     </Card>
                                 </CarouselItem>
                             ))}
