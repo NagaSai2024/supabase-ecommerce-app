@@ -3,18 +3,12 @@ import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious
 import { Card } from "../ui/card";
 import { Skeleton } from "../ui/skeleton";
 import { useQuery } from "@tanstack/react-query";
+import type { TopDealProduct } from "@/types/product";
 
-type Product = {
-    id: number;
-    root_bs_rank: number;
-    title: string;
-    image_url: string;
-    final_price: number;
-}
 
 export default function TopDeals() {
 
-    const {data: topProductsQuery= []} = useQuery<Product[]>({
+    const {data: topProductsQuery= []} = useQuery<TopDealProduct[]>({
         queryKey: ["topDeals"],
         queryFn: getTopDeals,
     });

@@ -1,21 +1,22 @@
 import { getCategoryProducts } from "@/lib/getCategoryProducts";
 import CategorySection from "./CategorySection";
 import { useQuery } from "@tanstack/react-query";
+import type { CategoryProduct } from "@/types/product";
 
 
 export default function HomeCategories () {
 
-    const shoesQuery = useQuery({
-        queryKey: ["catergoryProducts", "Shoes"],
+    const shoesQuery = useQuery<CategoryProduct[]>({
+        queryKey: ["categoryProducts", "Shoes"],
         queryFn: () => getCategoryProducts("Shoes")
     });
 
-    const beautyQuery = useQuery({
+    const beautyQuery = useQuery<CategoryProduct[]>({
         queryKey: ["categoryProducts", "Beauty"],
         queryFn: () => getCategoryProducts("Beauty")
     });
 
-    const electronicsQuery = useQuery({
+    const electronicsQuery = useQuery<CategoryProduct[]>({
         queryKey: ["categoryProducts", "Electronics"],
         queryFn: () => getCategoryProducts("Electronics")
     });

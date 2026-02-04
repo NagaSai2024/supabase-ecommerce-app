@@ -1,16 +1,10 @@
 import { IoIosArrowDroprightCircle } from "react-icons/io";
 import { Skeleton } from "../ui/skeleton";
-
-type Item = {
-    id: number;
-    title: string;
-    image_url: string;
-    subtitle: string;
-}
+import type { CategoryProduct } from "@/types/product";
 
 type ProductCategoryProps = {
     heading: string;
-    items: Item[];
+    items: CategoryProduct[];
 }
 
 export default function CategorySection({ heading, items }: ProductCategoryProps) {

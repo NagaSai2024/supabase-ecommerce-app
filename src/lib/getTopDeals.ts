@@ -1,6 +1,7 @@
+import type { TopDealProduct } from "@/types/product"
 import { supabase } from "./supabase"
 
-export const getTopDeals = async () => {
+export const getTopDeals = async (): Promise<TopDealProduct[]> => {
     const { data, error } = await supabase
         .from("products")
         .select("id, root_bs_rank, title, image_url, final_price")
@@ -12,5 +13,5 @@ export const getTopDeals = async () => {
         return []
     }
 
-    return data
+    return data ?? []
 }
