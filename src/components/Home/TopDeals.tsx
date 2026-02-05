@@ -8,7 +8,7 @@ import type { TopDealProduct } from "@/types/product";
 
 export default function TopDeals() {
 
-    const {data: topProductsQuery= []} = useQuery<TopDealProduct[]>({
+    const { data: topProductsQuery = [], isLoading } = useQuery<TopDealProduct[]>({
         queryKey: ["topDeals"],
         queryFn: getTopDeals,
     });
@@ -21,7 +21,15 @@ export default function TopDeals() {
                 <div className="relative">
                     <Carousel opts={{ align: "start" }} className="w-full">
                         <CarouselContent className="-ml-0">
-                            {topProductsQuery.map((item) => (
+                            {isLoading ? (
+                                Array.from({ length: 5 }).map((_, i) => (
+                                    <CarouselItem key={i} className="pl-0 basis-[70%] sm:basis-1/2 md:basis-1/3 lg:basis-1/5">
+                                        <Card className="p-4 flex flex-col items-center justify-between h-full">
+                                            <Skeleton className="w-full h-60" />
+                                        </Card>
+                                    </CarouselItem>
+                                ))
+                            ) : topProductsQuery?.map((item) => (
                                 <CarouselItem
                                     key={item.id}
                                     className="pl-0 basis-[70%] sm:basis-1/2 md:basis-1/3 lg:basis-1/5"

@@ -23,9 +23,9 @@ export default function HomeCategories () {
 
     return(
         <section className="mt-3 grid grid-cols-1 lg:grid-cols-3 gap-3 lg:px-3">
-            <CategorySection heading="Fashion's Top Deal" items={shoesQuery.data ?? []}/>
-            <CategorySection heading="Hair & Skincare Essentials" items={beautyQuery.data ?? []}/>
-            <CategorySection heading="Best Gadgets & Appliances" items={electronicsQuery.data ?? []}/>
+            <CategorySection heading="Fashion's Top Deal" items={shoesQuery.data ?? []} isLoading={shoesQuery.isLoading}/>
+            <CategorySection heading="Hair & Skincare Essentials" items={beautyQuery.data ?? []} isLoading={beautyQuery.isLoading}/>
+            <CategorySection heading="Best Gadgets & Appliances" items={electronicsQuery.data ?? []} isLoading={electronicsQuery.isLoading}/>
         </section>
     )
 }

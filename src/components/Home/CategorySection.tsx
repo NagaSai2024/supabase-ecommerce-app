@@ -5,9 +5,10 @@ import type { CategoryProduct } from "@/types/product";
 type ProductCategoryProps = {
     heading: string;
     items: CategoryProduct[];
-}
+    isLoading?: boolean;
+};
 
-export default function CategorySection({ heading, items }: ProductCategoryProps) {
+export default function CategorySection({ heading, items, isLoading }: ProductCategoryProps) {
     return (
         <div className="bg-white p-4">
 
@@ -19,7 +20,13 @@ export default function CategorySection({ heading, items }: ProductCategoryProps
             </div>
 
             <div className="grid grid-cols-2 gap-4">
-                {items.map((item) => (
+                {isLoading ? (
+                    Array.from({ length: 4 }).map((_, i) => (
+                        <div key={i}>
+                            <Skeleton className="w-full h-50" />
+                        </div>
+                    ))
+                ) : items?.map((item) => (
                     <div key={item.id} className="border rounded-md p-3 hover:shadow-sm transition">
                         <div className="h-28 flex items-center justify-center overflow-hidden">
                             <img
@@ -30,7 +37,6 @@ export default function CategorySection({ heading, items }: ProductCategoryProps
                         </div>
                         <p className="mt-3 text-sm line-clamp-1">{item.title}</p>
                         <p className="text-green-600 font-semibold text-sm">{item.subtitle}</p>
-                        <Skeleton/>
                     </div>
                 ))}
             </div>

@@ -1,7 +1,11 @@
 import type { CategoryProduct } from "@/types/product";
 import { supabase } from "./supabase";
+import { delayLoading } from "./delayLoading";
 
 export const getCategoryProducts = async (category: string): Promise<CategoryProduct[]> => {
+
+    await delayLoading()
+
     const { data, error } = await supabase
         .from("products")
         .select("id, title, image_url, root_bs_rank, discount_percent")
